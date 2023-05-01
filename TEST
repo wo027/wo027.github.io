@@ -1,0 +1,15 @@
+DROP VIEW if exists pre_sales;
+CREATE VIEW pre_sales
+as (
+SELECT TEXT(extract(year FROM invoicedate)) as year ,
+		RIGHT(CONCAT('0',TEXT(extract(month FROM invoicedate))),2) as month,
+		customerid as customer_id,
+		country,
+		sum(quantity) as quantity
+FROM onlie_retail or2 
+WHERE customerid  is not null 
+GROUP BY 1,2,3,4
+having  sum(quantity) > 0)
+
+SELECT * FROM pre_sales 
+WHERE customer_id = '12347'
