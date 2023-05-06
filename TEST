@@ -13,3 +13,6 @@ having  sum(quantity) > 0)
 
 SELECT * FROM pre_sales 
 WHERE customer_id = '12347'
+
+
+-- 변경 git test
